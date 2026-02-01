@@ -1,0 +1,85 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 210 100% 98%;
+    --foreground: 222 47% 11%;
+  }
+}
+
+@layer base {
+  /* REMOVED the specific border-blue-200/50 line causing the crash */
+  * {
+    border-color: rgba(191, 219, 254, 0.5); /* Replaced with standard CSS */
+  }
+
+  body {
+    @apply font-sans antialiased;
+    /* Deep Ocean / Nebula Gradient */
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #4facfe 75%, #00f2fe 100%);
+    background-size: 400% 400%;
+    animation: gradientShift 15s ease infinite;
+    position: relative;
+    overflow-x: hidden;
+    min-height: 100vh;
+  }
+  
+  /* Background Pattern */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: 
+      radial-gradient(circle at 20% 20%, rgba(99, 102, 241, 0.15) 0%, transparent 50%),
+      radial-gradient(circle at 80% 50%, rgba(139, 92, 246, 0.15) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: -2; /* Pushed way back */
+  }
+  
+  /* Glass Overlay - REDUCED OPACITY */
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    /* Changed from 0.7 to 0.4 to make it less "milky" */
+    background: rgba(255, 255, 255, 0.4); 
+    backdrop-filter: blur(80px); /* Slightly reduced blur */
+    pointer-events: none;
+    z-index: -1; /* Pushed back so content sits on top */
+  }
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@layer utilities {
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+  }
+  
+  /* Added specific scrollbar styling */
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: rgba(99, 102, 241, 0.5);
+    border-radius: 5px;
+  }
+  
+  /* Helper for glass cards */
+  .glass-card {
+    @apply bg-white/60 backdrop-blur-xl border border-white/40 shadow-xl;
+  }
+}
