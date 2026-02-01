@@ -100,6 +100,13 @@ export function Header() {
             Dashboard
             <span className="absolute -bottom-1 left-0 w-0 h-1 bg-gradient-to-r from-blue-600 to-purple-600 group-hover:w-full transition-all rounded-full" />
           </Link>
+           <Link
+            href="/marketplace"
+            className="text-sm font-bold text-slate-700 hover:text-blue-600 transition-colors relative group"
+          >
+            Marketplace
+            <span className="absolute -bottom-1 left-0 w-0 h-1 bg-gradient-to-r from-blue-600 to-purple-600 group-hover:w-full transition-all rounded-full" />
+          </Link>
           <Link
             href="/projects"
             className="text-sm font-bold text-slate-700 hover:text-blue-600 transition-colors relative group"
