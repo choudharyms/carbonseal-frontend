@@ -5,9 +5,11 @@ import Link from "next/link"
 import { Waves, Wallet } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
+
+
 declare global {
   interface Window {
-    ethereum?: any
+    ethereum: any;
   }
 }
 
